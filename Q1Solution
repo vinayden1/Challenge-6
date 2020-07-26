@@ -1,0 +1,54 @@
+//Question 1 solution:
+
+const array = [1,2,4,591,392,391,2,5,10,2,1,1,1,20,20];
+const verified = [];
+const finalArr = [];
+
+cleanTheRoom = (arr) => {
+	arr.sort((a, b) => a - b);
+	for(var i = 0; i < array.length ; i++) {
+		const entry = array[i];
+		const subArr = [];
+		for(var j = i+1; j <= array.length && !verified.includes(entry); j++) {
+			if(array[j] === entry) {
+				subArr.length <= 0 ?
+					subArr.push(array[i], array[j])
+					:
+					subArr.push(array[j]);
+			}
+		}
+		
+		const included = verified.includes(entry) ? true : false;
+		if(!included && subArr.length <= 0)
+			subArr.push(entry);
+
+		verified.push(entry);
+		if(subArr.length > 0)
+			finalArr.push(subArr);
+	}
+	console.log('Grouped by identical numbers:');
+	console.log(finalArr);
+}
+
+cleanTheRoom(array);
+
+//Bonus Question 1:
+
+const array = [1,"2","3",2];
+const finalArr = [];
+const diffType = [];
+const subArr = [];
+groupTypes = (arr) => {
+	arr.map(item => {
+		typeof(item) === 'string' ?
+			diffType.push(item)
+			:
+			subArr.push(item);
+	});
+	finalArr.push(subArr, diffType);
+	console.log('Grouping number types:');
+	console.log(finalArr);
+}
+
+groupTypes(array);
+
