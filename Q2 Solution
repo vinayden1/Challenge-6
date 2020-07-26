@@ -1,0 +1,21 @@
+//Question2 Solution:
+
+function arraySum(arr, target) {
+  arr.forEach(function(num, i) {
+    for (let j = 1; j <= arr.length; j++) {
+      if (arr[i] + arr[i + j] === target) {
+        let arr2 = [arr[i], arr[i + j]];
+        console.log(arr2);
+        return arr2;
+      }
+    }
+  });
+}
+
+let arr = [1, 2, 3, 4];
+
+let target = 4;
+
+arraySum(arr, target);
+
+//Returns [1, 3] because these are the array #'s that when combined, total my target # (4 in this case).
